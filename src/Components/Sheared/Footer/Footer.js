@@ -9,7 +9,7 @@ const Footer = () => {
         bgColor="black"
         className="text-center text-lg-start text-white"
       >
-        <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <section className="d-flex justify-content-center justify-content-lg-between p-4 container">
           <div className="me-5 d-none d-lg-block">
             <span>BD Books Are so Many Warehouses</span>
           </div>
@@ -36,7 +36,7 @@ const Footer = () => {
           </div>
         </section>
 
-        <section className="">
+        <section className="border-top">
           <div className="container text-center text-md-start mt-5">
             <div className="row mt-3">
               <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
@@ -44,56 +44,59 @@ const Footer = () => {
                   <i className="fas fa-gem me-3"></i>BD Books Warehouse
                 </h6>
                 <p>
-                  Here you can use rows and columns to organize your footer
-                  content. Lorem ipsum dolor sit amet, consectetur adipisicing
-                  elit.
+                  BD Books Warehouse operates over 340k sq ft of modern
+                  warehousing at its distribution centre based near Natore
+                  Shador.
+                  <br />
                 </p>
               </div>
 
               <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                <h6 className="text-uppercase fw-bold mb-4">Products</h6>
+                <h6 className="text-uppercase fw-bold mb-4">
+                  Security & payment
+                </h6>
                 <p>
-                  <Link to="#!" className="text-reset">
-                    Angular
+                  <Link to="/" className="text-reset">
+                    Privacy
                   </Link>
                 </p>
                 <p>
-                  <Link to="#!" className="text-reset">
-                    React
+                  <Link to="/" className="text-reset">
+                    Terms & conditions
                   </Link>
                 </p>
                 <p>
-                  <Link to="#!" className="text-reset">
-                    Vue
+                  <Link to="/" className="text-reset">
+                    Purple Visa Card
                   </Link>
                 </p>
                 <p>
-                  <Link to="#!" className="text-reset">
-                    Laravel
+                  <Link to="/" className="text-reset">
+                    Warehouse Insurance
                   </Link>
                 </p>
               </div>
 
               <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                <h6 className="text-uppercase fw-bold mb-4">Useful links</h6>
+                <h6 className="text-uppercase fw-bold mb-4">Stores</h6>
                 <p>
-                  <Link to="#!" className="text-reset">
-                    Pricing
+                  <Link to="/" className="text-reset">
+                    Store finder
                   </Link>
                 </p>
                 <p>
                   <Link to="#!" className="text-reset">
-                    Settings
+                    Current mailers
                   </Link>
                 </p>
                 <p>
                   <Link to="#!" className="text-reset">
-                    Orders
+                    Competitions
                   </Link>
                 </p>
                 <p>
                   <Link to="#!" className="text-reset">
-                    Help
+                    Store defibrillators
                   </Link>
                 </p>
               </div>
@@ -101,17 +104,18 @@ const Footer = () => {
               <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                 <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
                 <p>
-                  <i className="fas fa-home me-3"></i> New York, NY 10012, US
+                  <i className="fas fa-home me-3"></i> Natore, Rajshahi,
+                  Bangladash
                 </p>
                 <p>
                   <i className="fas fa-envelope me-3"></i>
-                  info@example.com
+                  bd-books@warehouse.com
                 </p>
                 <p>
-                  <i className="fas fa-phone me-3"></i> + 01 234 567 88
+                  <i className="fas fa-phone me-3"></i> 01577889966
                 </p>
                 <p>
-                  <i className="fas fa-print me-3"></i> + 01 234 567 89
+                  <i className="fas fa-phone me-3"></i> 01511223344
                 </p>
               </div>
             </div>
@@ -122,9 +126,12 @@ const Footer = () => {
           className="text-center p-4"
           style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
         >
-          © 2021 Copyright:
-          <Link className="text-reset fw-bold" to="https://mdbootstrap.com/">
-            MDBootstrap.com
+          &copy; {new Date().getFullYear()} Copyright:{"  "}
+          <Link
+            className="text-reset fw-bold"
+            to="https://bd-books-warehouse.web.app/"
+          >
+            BD Books Warehouse
           </Link>
         </div>
       </MDBFooter>
