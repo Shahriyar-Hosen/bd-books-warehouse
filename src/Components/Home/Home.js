@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './Home.css'
 
 const Home = () => {
     const [inventory, setInventory] = useState([])
@@ -11,7 +12,7 @@ const Home = () => {
   // ----------------------------------------
     return (
         <div>
-            <h1>This home Page: {inventory.length}</h1>
+            <h1 className=''>This home Page: {inventory.length}</h1>
             {
                 inventory.map((items) => <p key={items._id}>Name: {items.name}</p>)
             }
