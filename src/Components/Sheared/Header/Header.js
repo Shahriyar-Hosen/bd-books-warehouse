@@ -1,13 +1,16 @@
 import React from "react";
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "./Header.css"
 
 const Header = () => {
   return (
     <div>
       <Navbar bg="light" expand="lg">
-        <Container fluid>
-          <Navbar.Brand as={Link}  to="/">BD Books Warehouse</Navbar.Brand>
+        <Container>
+          <Navbar.Brand as={Link} to="/" className="text-primary fs-3 fw-bold text font-tapestry">
+            BD Books Warehouse
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -15,7 +18,9 @@ const Header = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link as={Link}  to="home">Home</Nav.Link>
+              <Nav.Link as={Link} to="home">
+                Home
+              </Nav.Link>
               <Nav.Link href="#action2">Link</Nav.Link>
               <NavDropdown title="Link" id="navbarScrollingDropdown">
                 <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
@@ -31,7 +36,7 @@ const Header = () => {
                 Link
               </Nav.Link>
             </Nav>
-              <Button variant="outline-success">Search</Button>
+            <Button variant="outline-success">Search</Button>
           </Navbar.Collapse>
         </Container>
       </Navbar>

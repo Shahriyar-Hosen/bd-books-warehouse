@@ -7,7 +7,7 @@ import Header from "./Components/Sheared/Header/Header";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
