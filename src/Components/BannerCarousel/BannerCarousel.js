@@ -60,7 +60,9 @@ const BannerCarousel = () => {
             alt="First slide"
           />
           <Carousel.Caption className="d-none d-md-block">
-            <button className="btn-custom">Manage Items</button>
+            <button className="btn-custom">
+              Manage Items
+            </button>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

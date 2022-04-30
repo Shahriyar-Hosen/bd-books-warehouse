@@ -34,13 +34,13 @@ const Product = ({ product }) => {
           <Card.Text className="my-2">Category: {category}</Card.Text>
           <Card.Text>
             <small>
-              {description.length > 60
-                ? description.slice(0, 60) + "..."
+              {description.length > 80
+                ? description.slice(0, 78) + "..."
                 : description}
             </small>
           </Card.Text>
         </Card.Body>
-        <Card.Footer className="border-0 bg-c-lite pb-0 mx-auto">
+        <Card.Footer className="border-0 bg-c-lite pb-0 mx-auto d-flex">
           <button className="btn-custom px-5">Update</button>
         </Card.Footer>
       </Card>
