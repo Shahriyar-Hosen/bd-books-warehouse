@@ -6,7 +6,6 @@ const Home = () => {
     return (
         <div>
             <BannerCarousel />
-            <h1 className=''>This home Page</h1>
             <Products />
         </div>
     );
