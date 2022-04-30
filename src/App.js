@@ -3,7 +3,7 @@ import "./App.css";
 import Home from "./Components/Home/Home";
 import Footer from "./Components/Sheared/Footer/Footer";
 import Header from "./Components/Sheared/Header/Header";
-// import './App.scss';
+import UpdateItems from "./Components/UpdateItems/UpdateItems";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        {/* <Route path="about" element={<About />} /> */}
+        <Route path="/update:id" element={<UpdateItems />} />
       </Routes>
       <Footer />
     </div>

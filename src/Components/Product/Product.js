@@ -1,9 +1,10 @@
 import React from "react";
 import { Card, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./Product.css";
 
 const Product = ({ product }) => {
-  const { img, name, price, description, quantity, supplier, sold, category } =
+  const {_id, img, name, price, description, quantity, supplier, sold, category } =
     product;
   return (
     <Col className="">
@@ -41,7 +42,10 @@ const Product = ({ product }) => {
           </Card.Text>
         </Card.Body>
         <Card.Footer className="border-0 bg-c-lite pb-0 mx-auto d-flex">
-          <button className="btn-custom px-5">Update</button>
+          <Link to={`update${_id}`}>
+            {" "}
+            <button className="btn-custom px-5">UPDATE</button>
+          </Link>
         </Card.Footer>
       </Card>
     </Col>
