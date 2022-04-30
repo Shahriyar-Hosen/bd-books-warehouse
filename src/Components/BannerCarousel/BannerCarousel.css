@@ -1,0 +1,25 @@
+.banner img {
+    max-height: 700px;
+}
+
+.btn-banner{
+    background-color: rgba(0, 0, 177, 0.596);
+    color: white;
+    border: 2px solid rgba(0, 0, 128, 0.486);
+    border-radius: 10px;
+    padding: 5px 20px;
+    font-size: large;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.btn-banner:hover{
+    background-color: white;
+    color: navy;
+    border: 2px solid rgba(45, 45, 245, 0.719);
+    border-radius: 10px;
+    padding: 5px 20px;
+    font-size: large;
+    font-weight: 500;
+    margin-bottom: 10px;
+}

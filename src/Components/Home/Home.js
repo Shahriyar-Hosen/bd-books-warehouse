@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Home.css'
+import BannerCarousel from '../BannerCarousel/BannerCarousel';
 
 const Home = () => {
     const [inventory, setInventory] = useState([])
@@ -12,6 +12,7 @@ const Home = () => {
   // ----------------------------------------
     return (
         <div>
+            <BannerCarousel />
             <h1 className=''>This home Page: {inventory.length}</h1>
             {
                 inventory.map((items) => <p key={items._id}>Name: {items.name}</p>)
