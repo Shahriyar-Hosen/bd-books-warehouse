@@ -40,6 +40,9 @@ const Product = ({ product }) => {
             </small>
           </Card.Text>
         </Card.Body>
+        <Card.Footer className="border-0 bg-c-lite pb-0 mx-auto">
+          <button className="btn-custom px-5">Update</button>
+        </Card.Footer>
       </Card>
     </Col>
   );
