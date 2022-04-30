@@ -1,14 +1,10 @@
-.cart {
+.cart-custom {
   background-color: rgb(250, 255, 240);
   border-radius: 10px;
   border: 2px solid rgb(236, 255, 208);
 }
-.cart img {
-  padding: 5px;
-  border-radius: 15px;
-}
 
-.bg-c-lite {
+.bg-c-footer {
   background-color: rgb(246, 253, 230);
 }
 

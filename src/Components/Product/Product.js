@@ -7,9 +7,9 @@ const Product = ({ product }) => {
   const {_id, img, name, price, description, quantity, supplier, sold, category } =
     product;
   return (
-    <Col className="">
-      <Card className="cart mx-auto" style={{ width: "350px" }}>
-        <Card.Img className=" d-fluid" variant="top" src={img} />
+    <Col>
+      <Card className="cart-custom mx-auto" style={{ width: "350px" }}>
+        <Card.Img className=" d-fluid p-1 rounded" variant="top" src={img} />
         <Card.Body className="mx-3">
           <Card.Title className="my-3 fw-bold fs-4 text-center">
             {name}
@@ -41,7 +41,7 @@ const Product = ({ product }) => {
             </small>
           </Card.Text>
         </Card.Body>
-        <Card.Footer className="border-0 bg-c-lite pb-0 mx-auto d-flex">
+        <Card.Footer className="border-0 bg-c-footer pb-0 mx-auto d-flex">
           <Link to={`update${_id}`}>
             {" "}
             <button className="btn-custom px-5">UPDATE</button>
