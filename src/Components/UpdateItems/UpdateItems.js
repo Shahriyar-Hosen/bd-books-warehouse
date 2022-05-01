@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardGroup, FormControl, InputGroup } from "react-bootstrap";
+import { Card, CardGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 
@@ -8,7 +8,6 @@ const UpdateItems = () => {
   const { register } = useForm();
   const [product, setProducts] = useState([]);
   const [quantity, setQuantity] = useState(0);
-  const [inputQuantity, setInputQuantity] = useState(0);
 
   const { _id, img, name, price, description, supplier, sold, category } =
     product;
@@ -27,16 +26,19 @@ const UpdateItems = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const inputValue = parseInt(event.target.quantity.value);
-    setInputQuantity(inputValue);
     receiptItems(inputValue);
     event.target.reset();
   };
 
   const receiptItems = (inputValue) => {
-    console.log(inputValue);
-    let receiptQuantity = quantity + 1;
-    updateQuantity(receiptQuantity);
-    setInputQuantity(0);
+    if (inputValue) {
+      console.log("ase", inputValue);
+      let receiptQuantity = quantity + inputValue;
+      updateQuantity(receiptQuantity);
+    } else {
+      let receiptQuantity = quantity + 1;
+      updateQuantity(receiptQuantity);
+    }
   };
 
   const deliveredItems = () => {
