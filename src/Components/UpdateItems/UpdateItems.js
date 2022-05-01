@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Card, CardGroup, FormControl, InputGroup } from "react-bootstrap";
+import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 
 const UpdateItems = () => {
   const { id } = useParams();
+  const { register } = useForm();
   const [product, setProducts] = useState([]);
   const [quantity, setQuantity] = useState(0);
+  const [inputQuantity, setInputQuantity] = useState(0);
 
   const { _id, img, name, price, description, supplier, sold, category } =
     product;
@@ -21,10 +24,27 @@ const UpdateItems = () => {
       });
   }, [id, quantity]);
 
-  const deliveredItems = (id) => {
-    const newQuantity = quantity - 1;
-    setQuantity(newQuantity);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const inputValue = parseInt(event.target.quantity.value);
+    setInputQuantity(inputValue);
+    receiptItems(inputValue);
+    event.target.reset();
+  };
 
+  const receiptItems = (inputValue) => {
+    console.log(inputValue);
+    let receiptQuantity = quantity + 1;
+    updateQuantity(receiptQuantity);
+    setInputQuantity(0);
+  };
+
+  const deliveredItems = () => {
+    const deliveredQuantity = quantity - 1;
+    updateQuantity(deliveredQuantity);
+  };
+
+  const updateQuantity = (newQuantity) => {
     const url = `https://quiet-sierra-51150.herokuapp.com/inventory/${id}`;
 
     // PUT Method update data using id
@@ -38,7 +58,8 @@ const UpdateItems = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
-        alert("Update Items Quantity successfully");
+        setQuantity(newQuantity);
+        // alert("Update Items Quantity successfully");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -105,22 +126,32 @@ const UpdateItems = () => {
             </Card.Text>
           </Card.Body>
           <Card.Footer className="border-0 bg-c-footer bg-info bg-gradient bg-opacity-10 pb-0 w-100">
-            <InputGroup className="mb-2 w-50 mx-auto">
-              <FormControl
-                placeholder="Update Quantity"
-                aria-label="Update Quantity"
-                aria-describedby="basic-addon2"
-              />
-            </InputGroup>
             <div className=" d-flex justify-content-center">
               <button
                 className="btn-custom px-5 me-2"
-                onClick={() => deliveredItems(_id)}
+                onClick={() => deliveredItems()}
               >
                 Delivered
               </button>
-              <button className="btn-custom px-5 me-2">UPDATE</button>
             </div>
+
+            <form
+              onSubmit={handleSubmit}
+              className="mb-3 d-flex justify-content-center w-100 w-md-50"
+            >
+              <input
+                {...register("inputQuantity")}
+                type="number"
+                className="form-control w-50 me-2"
+                placeholder="Update Quantity"
+                name="quantity"
+              ></input>
+              <input
+                type="submit"
+                value="Receipt"
+                className="btn btn-info rounded"
+              />
+            </form>
           </Card.Footer>
         </Card>
       </CardGroup>
