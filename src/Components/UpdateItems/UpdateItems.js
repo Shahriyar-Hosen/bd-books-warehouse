@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 const UpdateItems = () => {
   const { id } = useParams();
   const [product, setProducts] = useState([]);
+  const [updateQuantity, setUpdateQuantity] = useState(0);
   const {
     _id,
     img,
@@ -21,11 +22,14 @@ const UpdateItems = () => {
     const url = `https://quiet-sierra-51150.herokuapp.com/inventory/${id}`;
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => {
+        setProducts(data);
+        setUpdateQuantity(data.quantity);
+      });
   }, [id]);
 
   const deliveredItems = (id) => {
-    console.log(id);
+    setUpdateQuantity(updateQuantity - 1);
   };
 
   return (
@@ -67,7 +71,7 @@ const UpdateItems = () => {
               </div>
               <div>
                 <Card.Text className="my-1 fw-bold">
-                  Quantity: {quantity}
+                  Quantity: {updateQuantity}
                 </Card.Text>
                 <Card.Text className="my-1 fw-bold">Sold: {sold}</Card.Text>
               </div>
