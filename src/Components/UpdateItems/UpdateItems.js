@@ -23,6 +23,8 @@ const UpdateItems = () => {
       .then((data) => setProducts(data));
   }, [id]);
 
+  console.log(_id);
+
   return (
     <div className="container w-100 ">
       <CardGroup className="w-75 w-md-50 mx-auto py-5">
