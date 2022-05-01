@@ -5,31 +5,45 @@ import { useParams } from "react-router-dom";
 const UpdateItems = () => {
   const { id } = useParams();
   const [product, setProducts] = useState([]);
-  const [updateQuantity, setUpdateQuantity] = useState(0);
-  const {
-    _id,
-    img,
-    name,
-    price,
-    description,
-    quantity,
-    supplier,
-    sold,
-    category,
-  } = product;
+  const [quantity, setQuantity] = useState(0);
 
+  const { _id, img, name, price, description, supplier, sold, category } =
+    product;
+
+  // Read / Get Method - Read by ID
   useEffect(() => {
     const url = `https://quiet-sierra-51150.herokuapp.com/inventory/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
-        setUpdateQuantity(data.quantity);
+        setQuantity(data.quantity);
       });
-  }, [id]);
+  }, [id, quantity]);
 
   const deliveredItems = (id) => {
-    setUpdateQuantity(updateQuantity - 1);
+    const newQuantity = quantity - 1;
+    setQuantity(newQuantity);
+
+    const url = `https://quiet-sierra-51150.herokuapp.com/inventory/${id}`;
+
+    // PUT Method update data using id
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ quantity: newQuantity }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        alert("Update Items Quantity successfully");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    // ------------------------------------
   };
 
   return (
@@ -71,7 +85,7 @@ const UpdateItems = () => {
               </div>
               <div>
                 <Card.Text className="my-1 fw-bold">
-                  Quantity: {updateQuantity}
+                  Quantity: {quantity}
                 </Card.Text>
                 <Card.Text className="my-1 fw-bold">Sold: {sold}</Card.Text>
               </div>
