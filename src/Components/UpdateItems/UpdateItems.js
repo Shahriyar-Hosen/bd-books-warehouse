@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardGroup } from "react-bootstrap";
+import { Card, CardGroup, FormControl, InputGroup } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 const UpdateItems = () => {
@@ -16,6 +16,7 @@ const UpdateItems = () => {
     sold,
     category,
   } = product;
+
   useEffect(() => {
     const url = `https://quiet-sierra-51150.herokuapp.com/inventory/${id}`;
     fetch(url)
@@ -23,7 +24,9 @@ const UpdateItems = () => {
       .then((data) => setProducts(data));
   }, [id]);
 
-  console.log(_id);
+  const deliveredItems = (id) => {
+    console.log(id);
+  };
 
   return (
     <div className="container w-100 ">
@@ -34,7 +37,7 @@ const UpdateItems = () => {
         >
           <Card.Img
             style={{ maxWidth: "400px", borderRadius: "10px" }}
-            className="w-50 w-md-25 mx-auto"
+            className="w-50 w-md-25 mx-auto pt-3"
             variant="top"
             src={img}
           />
@@ -79,10 +82,27 @@ const UpdateItems = () => {
                   : description}
               </small>
             </Card.Text>
+            <Card.Text className="">
+              <small>ID: {_id}</small>
+            </Card.Text>
           </Card.Body>
-          <Card.Footer className="border-0 bg-c-footer bg-info bg-gradient bg-opacity-10 pb-0 w-100 d-flex justify-content-center">
-            <button className="btn-custom px-5 me-2">UPDATE</button>
-            <button className="btn-custom px-5 me-2">UPDATE</button>
+          <Card.Footer className="border-0 bg-c-footer bg-info bg-gradient bg-opacity-10 pb-0 w-100">
+            <InputGroup className="mb-2 w-50 mx-auto">
+              <FormControl
+                placeholder="Update Quantity"
+                aria-label="Update Quantity"
+                aria-describedby="basic-addon2"
+              />
+            </InputGroup>
+            <div className=" d-flex justify-content-center">
+              <button
+                className="btn-custom px-5 me-2"
+                onClick={() => deliveredItems(_id)}
+              >
+                Delivered
+              </button>
+              <button className="btn-custom px-5 me-2">UPDATE</button>
+            </div>
           </Card.Footer>
         </Card>
       </CardGroup>
