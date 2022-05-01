@@ -8,6 +8,7 @@ const UpdateItems = () => {
   const { register } = useForm();
   const [product, setProducts] = useState([]);
   const [quantity, setQuantity] = useState(0);
+  const [soldItem, setSoldItem] = useState(0);
 
   const { _id, img, name, price, description, supplier, sold, category } =
     product;
@@ -31,18 +32,21 @@ const UpdateItems = () => {
   };
 
   const receiptItems = (inputValue) => {
-    if (inputValue) {
-      console.log("ase", inputValue);
-      let receiptQuantity = quantity + inputValue;
+    if (inputValue <= 0) {
+      return console.log("please positive value");
+    } else if (inputValue > 0) {
+      const receiptQuantity = quantity + inputValue;
       updateQuantity(receiptQuantity);
     } else {
-      let receiptQuantity = quantity + 1;
+      const receiptQuantity = quantity + 1;
       updateQuantity(receiptQuantity);
     }
   };
 
   const deliveredItems = () => {
     const deliveredQuantity = quantity - 1;
+    const soldQuantity = sold + 1;
+    updateSoldItem(soldQuantity);
     updateQuantity(deliveredQuantity);
   };
 
@@ -61,6 +65,28 @@ const UpdateItems = () => {
       .then((data) => {
         console.log("Success:", data);
         setQuantity(newQuantity);
+        // alert("Update Items Quantity successfully");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    // ------------------------------------
+  };
+  const updateSoldItem = (newSold) => {
+    const url = `https://quiet-sierra-51150.herokuapp.com/inventory/${id}`;
+
+    // PUT Method update data using id
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ sold: newSold }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        setSoldItem(newSold);
         // alert("Update Items Quantity successfully");
       })
       .catch((error) => {
