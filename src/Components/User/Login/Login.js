@@ -4,13 +4,16 @@ import {
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import Loading from "../../Sheared/Loading/Loading";
 
 const Login = () => {
   const navigate = useNavigate();
   const emailRef = useRef("");
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
@@ -27,7 +30,7 @@ const Login = () => {
 
   if (user) {
     console.log(user);
-    navigate("/");
+    navigate(from, { replace: true });
   }
 
   const handleSubmit = (event) => {

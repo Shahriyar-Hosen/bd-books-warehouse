@@ -7,7 +7,8 @@ import MyItems from "./Components/MyItems/MyItems";
 import Footer from "./Components/Sheared/Footer/Footer";
 import Header from "./Components/Sheared/Header/Header";
 import UpdateItems from "./Components/UpdateItems/UpdateItems";
-import Login from './Components/User/Login/Login';
+import Login from "./Components/User/Login/Login";
+import RequireAuth from "./Components/User/RequireAuth/RequireAuth";
 import SignUp from "./Components/User/SignUp/SignUp";
 
 function App() {
@@ -17,10 +18,38 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/update:id" element={<UpdateItems />} />
-        <Route path="/manage-inventories" element={<ManageInventories />} />
-        <Route path="/add-item" element={<AddItem />} />
-        <Route path="/my-items" element={<MyItems />} />
+        <Route
+          path="/update:id"
+          element={
+            <RequireAuth>
+              <UpdateItems />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/manage-inventories"
+          element={
+            <RequireAuth>
+              <ManageInventories />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/add-item"
+          element={
+            <RequireAuth>
+              <AddItem />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/my-items"
+          element={
+            <RequireAuth>
+              <MyItems />
+            </RequireAuth>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
