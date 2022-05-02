@@ -2,8 +2,8 @@ import React from "react";
 import { Button, Form } from "react-bootstrap";
 
 const AddItem = () => {
-//   const items = {
-    /* name
+  //   const items = {
+  /* name
 "Ceṣṭara jimanesiyama future era Calcium"
 
 supplier
@@ -19,9 +19,10 @@ description
 "So that by eating bamboo, Bedisha, frustration with life."
 
 */
-//   };
+  //   };
   const handleSubmit = (event) => {
     event.preventDefault();
+    const email = event.target.email.value;
     const name = event.target.name.value;
     const price = event.target.price.value;
     const quantity = event.target.quantity.value;
@@ -30,8 +31,9 @@ description
     const img = event.target.img.value;
     const category = event.target.category.value;
     const description = event.target.description.value;
-    
+
     const inventory = {
+      email,
       name,
       price: parseInt(price),
       quantity: parseInt(quantity),
@@ -70,6 +72,9 @@ description
         <h1 className="text-center" style={{ color: "navy" }}>
           Add Item
         </h1>
+        <Form.Group className="mb-3">
+          <Form.Control type="email" name="email" placeholder="User Email" />
+        </Form.Group>
         <Form.Group className="mb-3">
           <Form.Control type="text" name="name" placeholder="Name" />
         </Form.Group>
