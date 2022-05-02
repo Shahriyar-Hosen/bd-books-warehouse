@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import Loading from "../../Sheared/Loading/Loading";
 
 const Login = () => {
   const navigate = useNavigate();
+  const emailRef = useRef("");
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [sendPasswordResetEmail, sending, resetError] =
+    useSendPasswordResetEmail(auth);
 
   if (loading) {
     return <Loading />;
+  }
+
+  if (sending) {
+    return console.log("sending");
   }
 
   if (user) {
@@ -27,12 +37,19 @@ const Login = () => {
     signInWithEmailAndPassword(email, password);
   };
 
+  const resetPassword = async () => {
+    const email = emailRef.current.value;
+    await sendPasswordResetEmail(email);
+    console.log("Sent email");
+  };
+
   return (
     <div className="container mb-5">
       <Form onSubmit={handleSubmit} className="w-50 mx-auto">
         <Form.Group className="mb-3 mt-3" controlId="formBasicEmail">
           <Form.Control
             required
+            ref={emailRef}
             type="email"
             name="email"
             className=""
@@ -50,6 +67,7 @@ const Login = () => {
           />
         </Form.Group>
         <p className="text-danger">{error?.message}</p>
+        <p className="text-danger">{resetError?.message}</p>
         <Form.Group className="mb-3" controlId="formBasicCheckbox"></Form.Group>
         <Button
           className="w-100 rounded-pill d-block mx-auto fs-5 mb-4"
@@ -67,7 +85,11 @@ const Login = () => {
       </p>
       <p className=" text-center mt-2">
         Forget Password?
-        <Link to="/login" className="text-primary text-decoration-none px-2">
+        <Link
+          to="/login"
+          onClick={resetPassword}
+          className="text-primary text-decoration-none px-2"
+        >
           Reset Password
         </Link>
       </p>
