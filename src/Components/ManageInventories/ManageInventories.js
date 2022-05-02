@@ -1,4 +1,3 @@
-import React from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useInventory from "../../hooks/useInventory";
@@ -6,7 +5,29 @@ import { FaPlus } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
 
 const ManageInventories = () => {
-  const [inventory] = useInventory();
+  const [inventory, setInventory] = useInventory();
+
+  const deleteItem = (id) => {
+    // Delete / DELETE Method - delete by id
+    const proceed = window.confirm("Delete This is User");
+    if (proceed) {
+      console.log("user id: ", id);
+      const url = `https://quiet-sierra-51150.herokuapp.com/inventory/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            console.log("deleted:", data);
+            const remaining = inventory.filter((user) => user._id !== id);
+            setInventory(remaining);
+          }
+        });
+    }
+
+    // ----------------------------------------
+  };
   return (
     <div className="container my-5">
       <div className="d-flex justify-content-between align-items-center">
@@ -40,7 +61,10 @@ const ManageInventories = () => {
               </td>
               <td className=" table-warning">{item.name}</td>
               <td className=" table-primary text-center">{item.quantity}</td>
-              <td className=" table-danger text-danger text-center fs-3">
+              <td
+                className=" table-danger text-danger text-center fs-3"
+                onClick={() => deleteItem(item._id)}
+              >
                 <RiDeleteBin2Line />
               </td>
             </tr>
