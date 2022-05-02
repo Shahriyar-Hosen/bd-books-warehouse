@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import AddItem from "./Components/AddItem/AddItem";
 import Home from "./Components/Home/Home";
+import Login from "./Components/Login/Login";
 import ManageInventories from "./Components/ManageInventories/ManageInventories";
 import MyItems from "./Components/MyItems/MyItems";
 import Footer from "./Components/Sheared/Footer/Footer";
@@ -19,6 +20,7 @@ function App() {
         <Route path="/manage-inventories" element={<ManageInventories />} />
         <Route path="/add-item" element={<AddItem />} />
         <Route path="/my-items" element={<MyItems />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
     </div>
