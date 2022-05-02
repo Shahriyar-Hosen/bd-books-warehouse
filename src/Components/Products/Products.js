@@ -5,7 +5,7 @@ import useInventory from "../../hooks/useInventory";
 import Product from "../Product/Product";
 
 const Products = () => {
-  const [inventory] = useInventory([]);
+  const [inventory] = useInventory();
   return (
     <div className="container my-5">
       <h1>Product: {inventory.length}</h1>
