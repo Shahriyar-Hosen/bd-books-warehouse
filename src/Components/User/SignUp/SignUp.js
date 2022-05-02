@@ -1,19 +1,36 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
+import Loading from "../../Sheared/Loading/Loading";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (user) {
+    console.log(user);
+    navigate("/home");
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const name = event.target.name.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
     console.log(name, email, password);
+    createUserWithEmailAndPassword(email, password);
   };
   return (
     <div>
-      <Form onSubmit={handleSubmit}  className="w-50 mx-auto">
+      <Form onSubmit={handleSubmit} className="w-50 mx-auto">
         <Form.Group className="mb-3 mt-3  fs-5" controlId="formBasicName">
           <Form.Control
             required
