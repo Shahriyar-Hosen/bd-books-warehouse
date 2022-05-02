@@ -10,7 +10,7 @@ const UpdateItems = () => {
   const [quantity, setQuantity] = useState(0);
   const [soldItem, setSoldItem] = useState(0);
 
-  const { _id, img, name, price, description, supplier, sold, category } =
+  const {  img, name, price, description, supplier, sold, category } =
     product;
 
   // Read / Get Method - Read by ID
@@ -38,8 +38,8 @@ const UpdateItems = () => {
       const receiptQuantity = quantity + inputValue;
       updateQuantity(receiptQuantity);
     } else {
-      const receiptQuantity = quantity + 1;
-      updateQuantity(receiptQuantity);
+      // const receiptQuantity = quantity + 1;
+      // updateQuantity(receiptQuantity);
     }
   };
 
@@ -48,6 +48,7 @@ const UpdateItems = () => {
     const soldQuantity = sold + 1;
     updateSoldItem(soldQuantity);
     updateQuantity(deliveredQuantity);
+    console.log("Sold Item:", soldItem);
   };
 
   const updateQuantity = (newQuantity) => {
@@ -149,9 +150,9 @@ const UpdateItems = () => {
                   : description}
               </small>
             </Card.Text>
-            <Card.Text className="">
+            {/* <Card.Text className="">
               <small>ID: {_id}</small>
-            </Card.Text>
+            </Card.Text> */}
           </Card.Body>
           <Card.Footer className="border-0 bg-c-footer bg-info bg-gradient bg-opacity-10 pb-0 w-100">
             <div className=" d-flex justify-content-center">
@@ -176,8 +177,8 @@ const UpdateItems = () => {
               ></input>
               <input
                 type="submit"
-                value="Receipt"
-                className="btn btn-info rounded"
+                value="Restock"
+                className="btn btn-info rounded fs-5 text-white bg-primary bg-gradient bg-opacity-75 "
               />
             </form>
           </Card.Footer>

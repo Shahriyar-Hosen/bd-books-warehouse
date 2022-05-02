@@ -13,6 +13,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/update:id" element={<UpdateItems />} />
+        <Route path="/update:id" element={<UpdateItems />} />
+        <Route path="/update:id" element={<UpdateItems />} />
+        <Route path="/update:id" element={<UpdateItems />} />
       </Routes>
       <Footer />
     </div>
