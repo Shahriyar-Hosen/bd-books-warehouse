@@ -9,7 +9,12 @@ const ManageInventories = () => {
     <div className="container table-responsive">
       <div className="d-flex justify-content-between align-items-center">
         <h2>Manage Inventories</h2>
-        <Link to="/add-item">Add Items</Link>
+        <Link
+          to="/add-item"
+          className="btn btn-info py-0 text-white text-decoration-none"
+        >
+          Add Items
+        </Link>
       </div>
       <Table hover className="table-responsive table-info">
         <thead className="text-center">
