@@ -2,18 +2,21 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useInventory from "../../hooks/useInventory";
+import { FaPlus } from "react-icons/fa";
+import { RiDeleteBin2Line } from "react-icons/ri";
 
 const ManageInventories = () => {
   const [inventory] = useInventory();
   return (
-    <div className="container table-responsive">
+    <div className="container my-5">
       <div className="d-flex justify-content-between align-items-center">
         <h2>Manage Inventories</h2>
         <Link
           to="/add-item"
-          className="btn btn-info py-0 text-white text-decoration-none"
+          className="btn btn-info py-0 px-2 text-white text-decoration-none d-flex justify-content-between align-items-center"
         >
-          Add Items
+          <FaPlus />
+          <span className="ps-1">Add Items</span>
         </Link>
       </div>
       <Table hover className="table-responsive table-info">
@@ -25,19 +28,21 @@ const ManageInventories = () => {
             <th className=" table-danger fs-5">Remove Item</th>
           </tr>
         </thead>
-        <tbody className="table-success">
+        <tbody>
           {inventory.map((item) => (
             <tr key={item._id}>
               <td className=" table-info text-center">
                 <img
-                  style={{ width: "50px", borderRadius: "50%" }}
+                  style={{ width: "35px", borderRadius: "50%" }}
                   src={item.img}
                   alt=""
                 />
               </td>
               <td className=" table-warning">{item.name}</td>
               <td className=" table-primary text-center">{item.quantity}</td>
-              <td className=" table-danger text-center">Delete</td>
+              <td className=" table-danger text-danger text-center fs-3">
+                <RiDeleteBin2Line />
+              </td>
             </tr>
           ))}
         </tbody>
