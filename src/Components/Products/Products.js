@@ -1,5 +1,6 @@
 import React from "react";
-import {Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import useInventory from "../../hooks/useInventory";
 import Product from "../Product/Product";
 
@@ -14,7 +15,11 @@ const Products = () => {
             <Product key={items._id} product={items}></Product>
           ))}
         </Row>
-        <button className="btn-custom mx-auto d-block my-5 py-2 px-5">Manage Inventories</button>
+        <Link to="manage-inventories" className="text-decoration-none">
+          <button className="btn-custom mx-auto d-block my-5 py-2 px-5">
+            Manage Inventories
+          </button>
+        </Link>
       </div>
     </div>
   );

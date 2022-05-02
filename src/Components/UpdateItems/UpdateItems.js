@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card, CardGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const UpdateItems = () => {
   const { id } = useParams();
@@ -10,8 +10,7 @@ const UpdateItems = () => {
   const [quantity, setQuantity] = useState(0);
   const [soldItem, setSoldItem] = useState(0);
 
-  const {  img, name, price, description, supplier, sold, category } =
-    product;
+  const { img, name, price, description, supplier, sold, category } = product;
 
   // Read / Get Method - Read by ID
   useEffect(() => {
@@ -50,29 +49,6 @@ const UpdateItems = () => {
     updateQuantity(deliveredQuantity);
     console.log("Sold Item:", soldItem);
   };
-
-  const updateQuantity = (newQuantity) => {
-    const url = `https://quiet-sierra-51150.herokuapp.com/inventory/${id}`;
-
-    // PUT Method update data using id
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ quantity: newQuantity }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        setQuantity(newQuantity);
-        // alert("Update Items Quantity successfully");
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-    // ------------------------------------
-  };
   const updateSoldItem = (newSold) => {
     const url = `https://quiet-sierra-51150.herokuapp.com/inventory/${id}`;
 
@@ -96,6 +72,28 @@ const UpdateItems = () => {
     // ------------------------------------
   };
 
+  const updateQuantity = (newQuantity) => {
+    const url = `https://quiet-sierra-51150.herokuapp.com/inventory/${id}`;
+
+    // PUT Method update data using id
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ quantity: newQuantity }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        setQuantity(newQuantity);
+        // alert("Update Items Quantity successfully");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    // ------------------------------------
+  };
   return (
     <div className="container w-100 ">
       <CardGroup className="w-75 w-md-50 mx-auto py-5">
@@ -184,6 +182,12 @@ const UpdateItems = () => {
           </Card.Footer>
         </Card>
       </CardGroup>
+
+      <Link to="manage-inventories" className="text-decoration-none">
+        <button className="btn-custom mx-auto d-block my-5 py-2 px-5 text-decoration-none">
+          Manage Inventories
+        </button>
+      </Link>
     </div>
   );
 };
