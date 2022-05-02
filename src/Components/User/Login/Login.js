@@ -1,13 +1,30 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
+import auth from "../../../firebase.init";
+import Loading from "../../Sheared/Loading/Loading";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (user) {
+    console.log(user);
+    navigate("/");
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    console.log(email, password);
+    signInWithEmailAndPassword(email, password);
   };
 
   return (
@@ -32,6 +49,7 @@ const Login = () => {
             placeholder="Password"
           />
         </Form.Group>
+        <p className="text-danger">{error?.message}</p>
         <Form.Group className="mb-3" controlId="formBasicCheckbox"></Form.Group>
         <Button
           className="w-100 rounded-pill d-block mx-auto fs-5 mb-4"

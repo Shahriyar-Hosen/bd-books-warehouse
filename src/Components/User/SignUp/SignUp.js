@@ -9,7 +9,7 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
   if (loading) {
     return <Loading />;
@@ -59,6 +59,7 @@ const SignUp = () => {
             placeholder="Password"
           />
         </Form.Group>
+        <p>{error?.message}</p>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Accept All Terms and Condition" />
         </Form.Group>
