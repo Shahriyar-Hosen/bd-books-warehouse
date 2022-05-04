@@ -5,12 +5,16 @@ import auth from "../../../firebase.init";
 import Loading from "../../Sheared/Loading/Loading";
 
 const SocialLogin = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-    
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+
   const from = location.state?.from?.pathname || "/";
-  
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
+
   if (user) {
     console.log(user);
     navigate(from, { replace: true });
@@ -41,6 +45,11 @@ const SocialLogin = () => {
         />
         CONTINUE WITH GOOGLE
       </button>
+      {error ? (
+        <p className="text-danger text-center">Error: {error.message}</p>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
