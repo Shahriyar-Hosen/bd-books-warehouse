@@ -37,27 +37,33 @@ const Header = () => {
                 Home
               </Nav.Link>
 
-              <Nav.Link
-                as={Link}
-                to="/manage-inventories"
-                className=" text-dark fw-bold fs-6"
-              >
-                Manage Inventories
-              </Nav.Link>
-              <Nav.Link
-                as={Link}
-                to="/add-item"
-                className=" text-dark fw-bold fs-6"
-              >
-                Add Item
-              </Nav.Link>
-              <Nav.Link
-                as={Link}
-                to="/my-items"
-                className=" text-dark fw-bold fs-6"
-              >
-                My items
-              </Nav.Link>
+              {user ? (
+                <>
+                  <Nav.Link
+                    as={Link}
+                    to="/manage-inventories"
+                    className=" text-dark fw-bold fs-6"
+                  >
+                    Manage Inventories
+                  </Nav.Link>
+                  <Nav.Link
+                    as={Link}
+                    to="/add-item"
+                    className=" text-dark fw-bold fs-6"
+                  >
+                    Add Item
+                  </Nav.Link>
+                  <Nav.Link
+                    as={Link}
+                    to="/my-items" 
+                    className=" text-dark fw-bold fs-6"
+                  >
+                    My items
+                  </Nav.Link>
+                </>
+              ) : (
+                ""
+              )}
             </Nav>
 
             <Navbar.Text>

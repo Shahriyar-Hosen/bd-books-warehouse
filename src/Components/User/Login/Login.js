@@ -7,6 +7,7 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import Loading from "../../Sheared/Loading/Loading";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -96,6 +97,7 @@ const Login = () => {
           Reset Password
         </Link>
       </p>
+      <SocialLogin />
     </div>
   );
 };
