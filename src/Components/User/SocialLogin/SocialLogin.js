@@ -1,9 +1,20 @@
 import React from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
+import Loading from "../../Sheared/Loading/Loading";
 
 const SocialLogin = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    
+  const from = location.state?.from?.pathname || "/";
+  
+  if (user) {
+    console.log(user);
+    navigate(from, { replace: true });
+  }
   return (
     <div className=" w-50 mx-auto">
       <div className="d-flex align-items-center">
