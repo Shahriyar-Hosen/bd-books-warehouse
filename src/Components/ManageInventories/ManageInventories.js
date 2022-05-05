@@ -4,9 +4,14 @@ import useInventory from "../../hooks/useInventory";
 import { FaPlus } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { toast } from "react-toastify";
+import Loading from "../Sheared/Loading/Loading";
 
 const ManageInventories = () => {
   const [inventory, setInventory] = useInventory();
+
+  if (inventory.length === 0) {
+    return <Loading></Loading>
+  }
 
   const deleteItem = (id) => {
     // Delete / DELETE Method - delete by id
