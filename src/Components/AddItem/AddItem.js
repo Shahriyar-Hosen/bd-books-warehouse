@@ -1,38 +1,34 @@
-import React from "react";
 import { Button, Form } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
+import auth from "../../firebase.init";
 
 const AddItem = () => {
-  //   const items = {
-  /* name
-"Ceṣṭara jimanesiyama future era Calcium"
-
-supplier
-"Rokomari"
-
-category
-"Self-developmental"
-
-img
-"https://i.ibb.co/m4d4MTM/site-img-5.png" 
-
-description
-"So that by eating bamboo, Bedisha, frustration with life."
-
-*/
-  //   };
+  const [user] = useAuthState(auth);
   const handleSubmit = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const name = event.target.name.value;
-    const price = event.target.price.value;
-    const quantity = event.target.quantity.value;
-    const sold = event.target.sold.value;
+    const inputPrice = event.target.price.value;
+    const inputQuantity = event.target.price.value;
+    const InputSold = event.target.sold.value;
     const supplier = event.target.supplier.value;
     const img = event.target.img.value;
     const category = event.target.category.value;
     const description = event.target.description.value;
+    let price = 0;
+    let quantity = 0;
+    let sold = 0;
 
+    if (inputPrice > 0) {
+      price = inputPrice;
+    }
+    if (inputQuantity > 0) {
+      quantity = inputQuantity;
+    }
+    if (InputSold > 0) {
+      sold = InputSold
+    }
     const inventory = {
       email,
       name,
@@ -57,9 +53,8 @@ description
     })
       .then((response) => response.json())
       .then((data) => {
-        toast("Create data Success" );
         event.target.reset();
-        alert("user added successfully");
+        toast("user added successfully");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -74,28 +69,54 @@ description
           Add Item
         </h1>
         <Form.Group className="mb-3">
-          <Form.Control type="email" name="email" placeholder="User Email" />
+          <Form.Control
+            value={user?.email}
+            type="email"
+            name="email"
+            placeholder="User Email"
+            disabled
+          />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Control type="text" name="name" placeholder="Name" />
+          <Form.Control type="text" name="name" placeholder="Name" required />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Control type="number" placeholder="Price" name="price" />
+          <Form.Control
+            type="number"
+            placeholder="Price"
+            name="price"
+            required
+          />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Control type="number" placeholder="quantity" name="quantity" />
+          <Form.Control
+            type="number"
+            placeholder="quantity"
+            name="quantity"
+            required
+          />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Control type="number" placeholder="sold" name="sold" />
+          <Form.Control type="number" placeholder="sold" name="sold" required />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Control type="text" placeholder="supplier" name="supplier" />
+          <Form.Control
+            type="text"
+            placeholder="supplier"
+            name="supplier"
+            required
+          />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Control type="text" placeholder="category" name="category" />
+          <Form.Control
+            type="text"
+            placeholder="category"
+            name="category"
+            required
+          />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Control type="text" placeholder="img" name="img" />
+          <Form.Control type="text" placeholder="img" name="img" required />
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Control

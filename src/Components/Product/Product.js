@@ -1,8 +1,12 @@
 import React from "react";
 import { Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Loading from "../Sheared/Loading/Loading";
 
 const Product = ({ product }) => {
+  if (!product) {
+    return <Loading></Loading>
+  }
   const { _id, img, name, price, description, quantity, supplier, sold } =
     product;
   return (
