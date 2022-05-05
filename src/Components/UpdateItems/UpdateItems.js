@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Card, CardGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UpdateItems = () => {
   const { id } = useParams();
   const { register } = useForm();
   const [product, setProducts] = useState([]);
   const [quantity, setQuantity] = useState(0);
-  const [soldItem, setSoldItem] = useState(0);
 
   const { img, name, price, description, supplier, sold, category } = product;
 
@@ -32,7 +32,7 @@ const UpdateItems = () => {
 
   const receiptItems = (inputValue) => {
     if (inputValue <= 0) {
-      return console.log("please positive value");
+      return toast("please positive value");
     } else if (inputValue > 0) {
       const receiptQuantity = quantity + inputValue;
       updateQuantity(receiptQuantity);
@@ -47,7 +47,6 @@ const UpdateItems = () => {
     const soldQuantity = sold + 1;
     updateSoldItem(soldQuantity);
     updateQuantity(deliveredQuantity);
-    console.log("Sold Item:", soldItem);
   };
   const updateSoldItem = (newSold) => {
     const url = `https://quiet-sierra-51150.herokuapp.com/inventory/${id}`;
@@ -62,8 +61,7 @@ const UpdateItems = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
-        setSoldItem(newSold);
+        toast("Update Items Quantity successfully");
         // alert("Update Items Quantity successfully");
       })
       .catch((error) => {
@@ -85,7 +83,7 @@ const UpdateItems = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
+        toast("Update Items Quantity successfully");
         setQuantity(newQuantity);
         // alert("Update Items Quantity successfully");
       })

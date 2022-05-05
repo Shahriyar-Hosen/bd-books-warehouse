@@ -16,7 +16,6 @@ const SignUp = () => {
   }
 
   if (user) {
-    console.log(user);
     navigate("/home");
   }
 
@@ -25,7 +24,7 @@ const SignUp = () => {
     const name = event.target.name.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
-    console.log(name, email, password);
+    console.log(name);
     createUserWithEmailAndPassword(email, password);
   };
   return (

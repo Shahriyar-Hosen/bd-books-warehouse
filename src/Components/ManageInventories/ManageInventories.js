@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useInventory from "../../hooks/useInventory";
 import { FaPlus } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
+import { toast } from "react-toastify";
 
 const ManageInventories = () => {
   const [inventory, setInventory] = useInventory();
@@ -11,7 +12,6 @@ const ManageInventories = () => {
     // Delete / DELETE Method - delete by id
     const proceed = window.confirm("Delete This is User");
     if (proceed) {
-      console.log("user id: ", id);
       const url = `https://quiet-sierra-51150.herokuapp.com/inventory/${id}`;
       fetch(url, {
         method: "DELETE",
@@ -19,7 +19,7 @@ const ManageInventories = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount > 0) {
-            console.log("deleted:", data);
+            toast("Deleted Data");
             const remaining = inventory.filter((user) => user._id !== id);
             setInventory(remaining);
           }

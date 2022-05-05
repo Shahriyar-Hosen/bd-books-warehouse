@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const useUpdateQuantity = (id, previousQuantity) => {
   const [newQuantity, setNewQuantity] = useState(0);
@@ -16,9 +17,8 @@ const useUpdateQuantity = (id, previousQuantity) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
+        toast("Update Items Quantity successfully");
         setNewQuantity(previousQuantity);
-        // alert("Update Items Quantity successfully");
       })
       .catch((error) => {
         console.error("Error:", error);

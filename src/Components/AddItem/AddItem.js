@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 const AddItem = () => {
   //   const items = {
@@ -56,7 +57,7 @@ description
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
+        toast("Create data Success" );
         event.target.reset();
         alert("user added successfully");
       })

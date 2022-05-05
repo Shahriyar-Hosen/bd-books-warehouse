@@ -3,9 +3,13 @@ import { Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useInventory from "../../hooks/useInventory";
 import Product from "../Product/Product";
+import Loading from "../Sheared/Loading/Loading";
 
 const Products = () => {
   const [inventory] = useInventory();
+  if (inventory.length === 0) {
+    return <Loading></Loading>
+  }
   return (
     <div className="container my-5">
       <h1>Product: {inventory.length}</h1>
