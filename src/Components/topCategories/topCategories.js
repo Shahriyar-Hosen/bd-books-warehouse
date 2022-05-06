@@ -6,8 +6,7 @@ const TopCategories = () => {
   const [categories, setCategories] = useState([]);
   // Get Method - Read all data
   useEffect(() => {
-    // fetch("https://quiet-sierra-51150.herokuapp.com/categories")
-    fetch("http://localhost:5000/categories")
+    fetch("https://quiet-sierra-51150.herokuapp.com/categories")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
