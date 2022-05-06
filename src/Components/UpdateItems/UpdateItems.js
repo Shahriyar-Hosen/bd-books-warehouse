@@ -3,6 +3,7 @@ import { Card, CardGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import Loading from "../Sheared/Loading/Loading";
 
 const UpdateItems = () => {
   const { id } = useParams();
@@ -22,6 +23,11 @@ const UpdateItems = () => {
         setQuantity(data.quantity);
       });
   }, [id, quantity]);
+
+  if (!product) {
+    return <Loading></Loading>
+  }
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
