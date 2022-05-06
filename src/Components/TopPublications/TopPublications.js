@@ -7,8 +7,7 @@ const TopPublications = () => {
   const [publications, setPublications] = useState([]);
   // Get Method - Read all data
   useEffect(() => {
-    // fetch("https://quiet-sierra-51150.herokuapp.com/categories")
-    fetch("http://localhost:5000/publications")
+    fetch("https://quiet-sierra-51150.herokuapp.com/publications")
       .then((res) => res.json())
       .then((data) => setPublications(data));
   }, []);
