@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { RiDeleteBin2Line } from "react-icons/ri";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 
 const MyItems = () => {
@@ -16,8 +17,28 @@ const MyItems = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setInventory(data));
-  }, []);
+  }, [user]);
   // ---------------------------------------
+
+  const deleteItem = (id) => {
+    // Delete / DELETE Method - delete by id
+    const proceed = window.confirm("Delete This Items");
+    if (proceed) {
+      const url = `http://localhost:5000/inventory/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            toast("Deleted Data");
+            const remaining = inventory.filter((user) => user._id !== id);
+            setInventory(remaining);
+          }
+        });
+    }
+  }
+  // ----------------------------------------
   return (
     <div className="container my-5">
       <h2>Manage Inventories</h2>
@@ -44,7 +65,7 @@ const MyItems = () => {
               <td className=" table-primary text-center">{item.quantity}</td>
               <td
                 className=" table-danger text-danger text-center fs-3"
-                // onClick={() => deleteItem(item._id)}
+                onClick={() => deleteItem(item._id)}
               >
                 <RiDeleteBin2Line />
               </td>
