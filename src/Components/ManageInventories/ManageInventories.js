@@ -15,7 +15,7 @@ const ManageInventories = () => {
 
   const deleteItem = (id) => {
     // Delete / DELETE Method - delete by id
-    const proceed = window.confirm("Delete This is Items");
+    const proceed = window.confirm("Delete This Items");
     if (proceed) {
       const url = `https://quiet-sierra-51150.herokuapp.com/inventory/${id}`;
       fetch(url, {

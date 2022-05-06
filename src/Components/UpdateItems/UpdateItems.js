@@ -94,6 +94,9 @@ const UpdateItems = () => {
   };
   return (
     <div className="container w-100 ">
+      <h1 className="mt-5 text-center fw-bold" style={{ color: "navy" }}>
+        Update Your Selecting Items
+      </h1>
       <CardGroup className="w-75 w-md-50 mx-auto py-5">
         <Card
           className=" shadow-lg bg-info bg-gradient bg-opacity-10 mx-auto border border-info"
@@ -131,7 +134,12 @@ const UpdateItems = () => {
               </div>
               <div>
                 <Card.Text className="my-1 fw-bold">
-                  Quantity: {quantity}
+                  Quantity:{" "}
+                  {quantity === 0 ? (
+                    <p className="text-danger">Sold Out</p>
+                  ) : (
+                    quantity
+                  )}
                 </Card.Text>
                 <Card.Text className="my-1 fw-bold">Sold: {sold}</Card.Text>
               </div>
@@ -153,10 +161,13 @@ const UpdateItems = () => {
           <Card.Footer className="border-0 bg-c-footer bg-info bg-gradient bg-opacity-10 pb-0 w-100">
             <div className=" d-flex justify-content-center">
               <button
-                className="btn-custom px-5 me-2"
+                className={
+                  quantity === 0 ? "btn btn-danger" : "btn-custom px-5 me-2"
+                }
                 onClick={() => deliveredItems()}
+                disabled={quantity === 0 ? true : false}
               >
-                Delivered
+                {quantity === 0 ? "Sold Out" : "Delivered"}
               </button>
             </div>
 

@@ -8,11 +8,13 @@ import Loading from "../Sheared/Loading/Loading";
 const Products = () => {
   const [inventory] = useInventory();
   if (inventory.length === 0) {
-    return <Loading></Loading>
+    return <Loading></Loading>;
   }
   return (
     <div className="container my-5">
-      <h1>Product: {inventory.length}</h1>
+      <h1 style={{ color: "navy" }} className="text-center my-5 fw-bold">
+        OUR TOP LISTING BOOKS
+      </h1>
       <div>
         <Row xs={1} md={3} className="g-4">
           {inventory.slice(0, 6).map((items) => (
