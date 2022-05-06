@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
+import Loading from "../Sheared/Loading/Loading";
 
 const MyItems = () => {
   const [inventory, setInventory] = useState([]);
@@ -12,19 +13,24 @@ const MyItems = () => {
   // Read / Get Method - Read by Search query
   useEffect(() => {
     const email = user.email;
-    console.log(email);
-    const url = `http://localhost:5000/inventory/?email=${email}`;
+    const url = `https://quiet-sierra-51150.herokuapp.com/inventory/?email=${email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setInventory(data));
   }, [user]);
   // ---------------------------------------
 
+  
+  if (inventory.length === 0) {
+    return <Loading></Loading>
+  }
+
+
   const deleteItem = (id) => {
     // Delete / DELETE Method - delete by id
     const proceed = window.confirm("Delete This Items");
     if (proceed) {
-      const url = `http://localhost:5000/inventory/${id}`;
+      const url = `https://quiet-sierra-51150.herokuapp.com/inventory/${id}`;
       fetch(url, {
         method: "DELETE",
       })
