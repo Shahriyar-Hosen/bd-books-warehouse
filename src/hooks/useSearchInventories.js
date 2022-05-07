@@ -6,7 +6,7 @@ const useSearchInventories = (email) => {
   // Read / Get Method - Read by Search query
   useEffect(() => {
     const getItems = async () => {
-      const url = `http://localhost:5000/myinventory/?email=${email}`;
+      const url = `http://localhost:5000/my-items/?email=${email}`;
       const { data } = await axios.get(url, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
