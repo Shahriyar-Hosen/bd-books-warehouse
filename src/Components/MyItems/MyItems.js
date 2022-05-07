@@ -4,21 +4,23 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
+import useSearchInventories from "../../hooks/useSearchInventories";
 import Loading from "../Sheared/Loading/Loading";
 
 const MyItems = () => {
-  const [inventory, setInventory] = useState([]);
+  // const [inventory, setInventory] = useState([]);
   const [user] = useAuthState(auth);
+  const [inventory]= useSearchInventories(user?.email)
 
   // Read / Get Method - Read by Search query
-  useEffect(() => {
-    const email = user.email;
-    const url = `https://quiet-sierra-51150.herokuapp.com/inventory/?email=${email}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setInventory(data));
-  }, [user]);
-  // ---------------------------------------
+  // useEffect(() => {
+  //   const email = user.email;
+  //   const url = `https://quiet-sierra-51150.herokuapp.com/inventory/?email=${email}`;
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => setInventory(data));
+  // }, [user]);
+  // // ---------------------------------------
 
   
   if (inventory.length === 0) {
@@ -28,21 +30,21 @@ const MyItems = () => {
 
   const deleteItem = (id) => {
     // Delete / DELETE Method - delete by id
-    const proceed = window.confirm("Delete This Items");
-    if (proceed) {
-      const url = `https://quiet-sierra-51150.herokuapp.com/inventory/${id}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            toast("Deleted Data");
-            const remaining = inventory.filter((user) => user._id !== id);
-            setInventory(remaining);
-          }
-        });
-    }
+    // const proceed = window.confirm("Delete This Items");
+    // if (proceed) {
+    //   const url = `https://quiet-sierra-51150.herokuapp.com/inventory/${id}`;
+    //   fetch(url, {
+    //     method: "DELETE",
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       if (data.deletedCount > 0) {
+    //         toast("Deleted Data");
+    //         const remaining = inventory.filter((user) => user._id !== id);
+    //         setInventory(remaining);
+    //       }
+    //     });
+    // }
   }
   // ----------------------------------------
   return (
