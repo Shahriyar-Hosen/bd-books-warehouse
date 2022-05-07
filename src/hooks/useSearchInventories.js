@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
-
+const axios = require("axios");
 const useSearchInventories = (email) => {
   const [inventory, setInventory] = useState([]);
 
   // Read / Get Method - Read by Search query
   useEffect(() => {
-    const url = `https://quiet-sierra-51150.herokuapp.com/inventory/?email=${email}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setInventory(data));
+    const getItems = async () => {
+      const url = `http://localhost:5000/myinventory/?email=${email}`;
+      const { data } = await axios.get(url, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
+      setInventory(data);
+    };
+    getItems();
   }, [email]);
   // ---------------------------------------
 
