@@ -26,16 +26,35 @@ const Login = () => {
     return <Loading />;
   }
 
-
   if (user) {
-    navigate(from, { replace: true });
+    // navigate(from, { replace: true });
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    signInWithEmailAndPassword(email, password);
+
+    await signInWithEmailAndPassword(email, password);
+
+    // create / POST Method
+    await fetch("http://localhost:5000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("accessToken", data.accessToken);
+        navigate(from, { replace: true });
+        event.target.reset();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    // ------------------------------------
   };
 
   const resetPassword = async () => {
