@@ -73,12 +73,14 @@ const Blogs = () => {
           <Card>
             <Card.Body>
               <Card.Title className="text-center text-info fs-2">
-                Card title
+                {`When should you use nodejs and when should you use MongoDB(কখন আপনার nodejs ব্যবহার করা উচিত এবং কখন MongoDB ব্যবহার করা উচিত)`}
               </Card.Title>
               <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
+                <h4>When should you use I node.js</h4>
+                <p>{`Node.js সাধারণত নন-ব্লকিং,  সিঙ্গেল-থ্রেড প্রকৃতির কারণে ইভেন্ট-চালিত সার্ভারের জন্য ব্যবহৃত হয়। এটি  ট্রেডিশনাল ওয়েবসাইট এবং ব্যাক-এন্ড API গুলোর জন্য ব্যবহৃত হয়, তবে  রিয়েল-টাইম, নেটওয়ার্ক-হেবি আর্কিটেকচারকে মাথায় রেখে ডিজাইন করা হয়েছে। অর্থাৎ, আমাদের কাছে রিয়েল-টাইম, দ্বি-মুখী সংযোগ সহ ওয়েব অ্যাপ্লিকেশন রয়েছে, যেখানে ক্লায়েন্ট এবং সার্ভার উভয়ই যোগাযোগ করতে পারে, তাদের স্বচ্ছন্দে ডেটা বিনিময় করার অনুমতি দেয়।`}</p>
+
+                <h4>when should I use MongoDB?</h4>
+                <p>{`MongoDB-তে JSON আকারে ফাইল গুলো সাজানো থাকে সে ক্ষেত্রে যারা জাভাস্ক্রিপ্ট নিয়ে কাজ করে তাদের জন্য বুঝতে এবং কাজ করতে অনেক সুবিধা হয়। আর এই কারণে সাধারণত node.js এর সাথে  সবচেয়ে বেশি MongoDB ব্যবহার করা হয়। এটাকেই বলা হয় NoSQL ডেটা  স্ট্রাকচার। NoSQL ডাটাবেজ কে  ডকুমেন্ট টাইপের ডাটাবেজ বলা হয়। NoSQL ডাটাবেজ গুলোতে যে ধরনের JSON  ফাইল আমরা দেখতে পাই সেগুলো কে MongoDB সাধারনত BJSON আকারে রাখে।  যাতে করে Quary করে ডাটা আনতে সময় কম লাগে। আর এই কারনেই   জাভাস্ক্রিপ্ট এর সাথে MongoDB ব্যবহার  করলে পারফর্মেন্স ভালো পাওয়া যায়।`}</p>
               </Card.Text>
             </Card.Body>
           </Card>
