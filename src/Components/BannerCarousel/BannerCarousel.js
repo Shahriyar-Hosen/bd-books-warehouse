@@ -14,7 +14,7 @@ const BannerCarousel = () => {
             alt="First slide"
           />
           <Carousel.Caption className="d-none d-md-block">
-            <Link to="/">
+            <Link to="/manage-inventories">
               <button className=" btn-custom">Manage Items</button>
             </Link>
           </Carousel.Caption>
@@ -26,7 +26,7 @@ const BannerCarousel = () => {
             alt="First slide"
           />
           <Carousel.Caption className="d-none d-md-block">
-            <Link to="/">
+            <Link to="/manage-inventories">
               <button className=" btn-custom">Manage Items</button>
             </Link>
           </Carousel.Caption>
@@ -38,7 +38,7 @@ const BannerCarousel = () => {
             alt="First slide"
           />
           <Carousel.Caption className="d-none d-md-block">
-            <Link to="/">
+            <Link to="/manage-inventories">
               <button className=" btn-custom">Manage Items</button>
             </Link>
           </Carousel.Caption>
@@ -50,7 +50,9 @@ const BannerCarousel = () => {
             alt="First slide"
           />
           <Carousel.Caption className="d-none d-md-block">
-            <button className="btn-custom">Manage Items</button>
+            <Link to="/manage-inventories">
+              <button className=" btn-custom">Manage Items</button>
+            </Link>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -60,9 +62,9 @@ const BannerCarousel = () => {
             alt="First slide"
           />
           <Carousel.Caption className="d-none d-md-block">
-            <button className="btn-custom">
-              Manage Items
-            </button>
+            <Link to="/manage-inventories">
+              <button className=" btn-custom">Manage Items</button>
+            </Link>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

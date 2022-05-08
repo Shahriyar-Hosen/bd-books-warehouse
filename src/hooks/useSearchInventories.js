@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
 const axios = require("axios");
+
 const useSearchInventories = (email) => {
   const [inventory, setInventory] = useState([]);
   const navigate = useNavigate();
