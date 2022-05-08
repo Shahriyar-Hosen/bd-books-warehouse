@@ -46,11 +46,11 @@ The following questions are answered on the Blogs page
 
 The basic version of the `JWT` token is used for email / password-based authentication. After logging in, a `JWT` token is created and stored on the client-side and for my item page, the token is sent with the call and verified to the user. `401` and `403` have been applied. And `.env` files have been added
 
-### All the technologies that have been used
+## All the technologies that have been used
 
-react-bootstrap: `2.3.1`
-react-dom: `18.1.0`
-react-firebase-hooks: `5.0.3`
-react-hook-form: `7.30.0`
-react-icons: `4.3.1`
-react-router-dom: `6.3.0`
+### react-bootstrap: `2.3.1`
+### react-dom: `18.1.0`
+### react-firebase-hooks: `5.0.3`
+### react-hook-form: `7.30.0`
+### react-icons: `4.3.1`
+### react-router-dom: `6.3.0`
