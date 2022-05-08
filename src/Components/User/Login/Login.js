@@ -87,8 +87,8 @@ const Login = () => {
             />
           </div>
           <div className="col-md-6 mt-5">
-            <h1 className="text-primary text-center mt-2">Please Login</h1>
-            <Form onSubmit={handleSubmit} className="w-50 mx-auto">
+            <Form onSubmit={handleSubmit} className="w-100 p-5 mx-auto">
+              <h1 className="text-primary text-center mt-2">Please Login</h1>
               <Form.Group className="mb-3 mt-3" controlId="formBasicEmail">
                 <Form.Control
                   required
