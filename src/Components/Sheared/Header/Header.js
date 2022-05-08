@@ -55,7 +55,7 @@ const Header = () => {
                   </Nav.Link>
                   <Nav.Link
                     as={Link}
-                    to="/my-items" 
+                    to="/my-items"
                     className=" text-dark fw-bold fs-6"
                   >
                     My items
@@ -67,6 +67,13 @@ const Header = () => {
             </Nav>
 
             <Navbar.Text>
+              <Nav.Link
+                as={Link}
+                to="/blogs"
+                className=" text-dark fw-bold fs-6"
+              >
+                Blogs
+              </Nav.Link>
               {user ? (
                 <Nav.Link
                   as={Link}

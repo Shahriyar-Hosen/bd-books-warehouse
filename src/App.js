@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "./App.css";
 import AddItem from "./Components/AddItem/AddItem";
+import Blogs from "./Components/Blogs/Blogs";
 import Home from "./Components/Home/Home";
 import ManageInventories from "./Components/ManageInventories/ManageInventories";
 import MyItems from "./Components/MyItems/MyItems";
@@ -52,6 +53,7 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route path="/blogs" element={<Blogs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="*" element={<NotFound />} />
