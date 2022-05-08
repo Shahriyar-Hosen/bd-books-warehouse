@@ -3,9 +3,9 @@ import { Card, Col, Row, Table } from "react-bootstrap";
 
 const Blogs = () => {
   return (
-    <div className="container row row-cols-1 row-cols-md-2 g-4 w-100 mx-auto my-5">
-      <Row xs={1} md={2} className="g-4">
-        <Col id="q-1">
+    <div className="container w-100 mx-auto my-5">
+      <Row xs={1} md={2} className="g-5">
+        <Col id="q-1" >
           <Card>
             <Card.Body>
               <Card.Title className="text-center text-info fs-2">
@@ -65,22 +65,6 @@ const Blogs = () => {
                     </tr>
                   </tbody>
                 </Table>
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card>
-            <Card.Body>
-              <Card.Title className="text-center text-info fs-2">
-                {`When should you use nodejs and when should you use MongoDB(কখন আপনার nodejs ব্যবহার করা উচিত এবং কখন MongoDB ব্যবহার করা উচিত)`}
-              </Card.Title>
-              <Card.Text>
-                <h4>When should you use I node.js</h4>
-                <p>{`Node.js সাধারণত নন-ব্লকিং,  সিঙ্গেল-থ্রেড প্রকৃতির কারণে ইভেন্ট-চালিত সার্ভারের জন্য ব্যবহৃত হয়। এটি  ট্রেডিশনাল ওয়েবসাইট এবং ব্যাক-এন্ড API গুলোর জন্য ব্যবহৃত হয়, তবে  রিয়েল-টাইম, নেটওয়ার্ক-হেবি আর্কিটেকচারকে মাথায় রেখে ডিজাইন করা হয়েছে। অর্থাৎ, আমাদের কাছে রিয়েল-টাইম, দ্বি-মুখী সংযোগ সহ ওয়েব অ্যাপ্লিকেশন রয়েছে, যেখানে ক্লায়েন্ট এবং সার্ভার উভয়ই যোগাযোগ করতে পারে, তাদের স্বচ্ছন্দে ডেটা বিনিময় করার অনুমতি দেয়।`}</p>
-
-                <h4>when should I use MongoDB?</h4>
-                <p>{`MongoDB-তে JSON আকারে ফাইল গুলো সাজানো থাকে সে ক্ষেত্রে যারা জাভাস্ক্রিপ্ট নিয়ে কাজ করে তাদের জন্য বুঝতে এবং কাজ করতে অনেক সুবিধা হয়। আর এই কারণে সাধারণত node.js এর সাথে  সবচেয়ে বেশি MongoDB ব্যবহার করা হয়। এটাকেই বলা হয় NoSQL ডেটা  স্ট্রাকচার। NoSQL ডাটাবেজ কে  ডকুমেন্ট টাইপের ডাটাবেজ বলা হয়। NoSQL ডাটাবেজ গুলোতে যে ধরনের JSON  ফাইল আমরা দেখতে পাই সেগুলো কে MongoDB সাধারনত BJSON আকারে রাখে।  যাতে করে Quary করে ডাটা আনতে সময় কম লাগে। আর এই কারনেই   জাভাস্ক্রিপ্ট এর সাথে MongoDB ব্যবহার  করলে পারফর্মেন্স ভালো পাওয়া যায়।`}</p>
               </Card.Text>
             </Card.Body>
           </Card>
@@ -157,12 +141,27 @@ const Blogs = () => {
           <Card>
             <Card.Body>
               <Card.Title className="text-center text-info fs-2">
-                Card title
+                {`When should you use nodejs and when should you use MongoDB(কখন আপনার nodejs ব্যবহার করা উচিত এবং কখন MongoDB ব্যবহার করা উচিত)`}
               </Card.Title>
               <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
+                <h4>When should you use I node.js</h4>
+                <p>{`Node.js সাধারণত নন-ব্লকিং,  সিঙ্গেল-থ্রেড প্রকৃতির কারণে ইভেন্ট-চালিত সার্ভারের জন্য ব্যবহৃত হয়। এটি  ট্রেডিশনাল ওয়েবসাইট এবং ব্যাক-এন্ড API গুলোর জন্য ব্যবহৃত হয়, তবে  রিয়েল-টাইম, নেটওয়ার্ক-হেবি আর্কিটেকচারকে মাথায় রেখে ডিজাইন করা হয়েছে। অর্থাৎ, আমাদের কাছে রিয়েল-টাইম, দ্বি-মুখী সংযোগ সহ ওয়েব অ্যাপ্লিকেশন রয়েছে, যেখানে ক্লায়েন্ট এবং সার্ভার উভয়ই যোগাযোগ করতে পারে, তাদের স্বচ্ছন্দে ডেটা বিনিময় করার অনুমতি দেয়।`}</p>
+
+                <h4>when should I use MongoDB?</h4>
+                <p>{`MongoDB-তে JSON আকারে ফাইল গুলো সাজানো থাকে সে ক্ষেত্রে যারা জাভাস্ক্রিপ্ট নিয়ে কাজ করে তাদের জন্য বুঝতে এবং কাজ করতে অনেক সুবিধা হয়। আর এই কারণে সাধারণত node.js এর সাথে  সবচেয়ে বেশি MongoDB ব্যবহার করা হয়। এটাকেই বলা হয় NoSQL ডেটা  স্ট্রাকচার। NoSQL ডাটাবেজ কে  ডকুমেন্ট টাইপের ডাটাবেজ বলা হয়। NoSQL ডাটাবেজ গুলোতে যে ধরনের JSON  ফাইল আমরা দেখতে পাই সেগুলো কে MongoDB সাধারনত BJSON আকারে রাখে।  যাতে করে Quary করে ডাটা আনতে সময় কম লাগে। আর এই কারনেই   জাভাস্ক্রিপ্ট এর সাথে MongoDB ব্যবহার  করলে পারফর্মেন্স ভালো পাওয়া যায়।`}</p>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+        
+        <Col>
+          <Card>
+            <Card.Body>
+              <Card.Title className="text-center text-info fs-2">
+                {`What is the purpose of JWT and how does it work(JWT এর উদ্দেশ্য কি এবং এটি কিভাবে কাজ করে)`}
+              </Card.Title>
+              <Card.Text>
+                {`JWT গোপনে তথ্য প্রেরণ করার সময় সিকিউর করার সিস্টেম। এই তথ্যগুলো ক্লায়েন্ট থেকে সার্ভারে পাঠানোর সময় সিকিউর করা হয়। এই সিস্টেমে যারা অথরাইজড না তাদেরকে ডাটা দেওয়া হয় না। ইউজার অথেন্টিকেশন করার সময় সার্ভার থেকে একটি টোকেন তৈরি হয়।   এই টোকেন টা সার্ভার থেকে ক্লায়েন্ট এ আসে। এই টোকেন টা local storage অথবা browser cookies রাখা হয়। এরপরে যখন কোন রিকোয়েস্ট পাঠানো হয় ব্যাক এন্ড এ তখন Bearer এর সাথে টোকন টা পাঠানো হয়।  এরপর সার্ভার  টোকেন  টাকে ভেরিফাই করে। যদি ভেরিফাই টোকন হয়ে থাকে তাহলে নির্দিষ্ট অথরাইজড  ডাটা  প্রদান করে।`}
               </Card.Text>
             </Card.Body>
           </Card>
