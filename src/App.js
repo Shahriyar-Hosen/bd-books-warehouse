@@ -7,6 +7,7 @@ import ManageInventories from "./Components/ManageInventories/ManageInventories"
 import MyItems from "./Components/MyItems/MyItems";
 import Footer from "./Components/Sheared/Footer/Footer";
 import Header from "./Components/Sheared/Header/Header";
+import NotFound from "./Components/Sheared/NotFound/NotFound";
 import UpdateItems from "./Components/UpdateItems/UpdateItems";
 import Login from "./Components/User/Login/Login";
 import RequireAuth from "./Components/User/RequireAuth/RequireAuth";
@@ -53,6 +54,7 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
       <ToastContainer></ToastContainer>
