@@ -5,7 +5,7 @@ const Blogs = () => {
   return (
     <div className="container w-100 mx-auto my-5">
       <Row xs={1} md={2} className="g-5">
-        <Col id="q-1" >
+        <Col>
           <Card>
             <Card.Body>
               <Card.Title className="text-center text-info fs-2">

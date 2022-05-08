@@ -9,6 +9,8 @@ import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import Loading from "../../Sheared/Loading/Loading";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import login from '../../../images/Login.jpg'
+import users from '../../../images/user.jpg'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -37,7 +39,7 @@ const Login = () => {
 
     await signInWithEmailAndPassword(email, password);
 
-    // create / POST Method 
+    // create / POST Method
     // http://localhost:5000/
     // https://quiet-sierra-51150.herokuapp.com/
     await fetch("https://quiet-sierra-51150.herokuapp.com/login", {
@@ -67,57 +69,166 @@ const Login = () => {
 
   return (
     <div className="container mb-5">
-      <Form onSubmit={handleSubmit} className="w-50 mx-auto">
-        <Form.Group className="mb-3 mt-3" controlId="formBasicEmail">
-          <Form.Control
-            required
-            ref={emailRef}
-            type="email"
-            name="email"
-            className=""
-            placeholder="Enter email"
-          />
-        </Form.Group>
+      <div className="w-100">
+        <img
+          style={{ height: "300px" }}
+          src={users}
+          className="img-fluid d-block mx-auto"
+          alt=""
+        />
+      </div>
+      <div className="card mb-5  border-0">
+        <div className="row g-0">
+          <div className="col-md-6">
+            <img
+              src={login}
+              className="img-fluid rounded-start d-md-block d-none"
+              alt="..."
+            />
+          </div>
+          <div className="col-md-6 mt-5">
+            <Form onSubmit={handleSubmit} className="w-50 mx-auto">
+            <Form.Group className="mb-3 mt-3" controlId="formBasicEmail">
+              <Form.Control
+                required
+                ref={emailRef}
+                type="email"
+                name="email"
+                className=""
+                placeholder="Enter email"
+              />
+            </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Control
-            required
-            type="password"
-            name="password"
-            className=""
-            placeholder="Password"
-          />
-        </Form.Group>
-        <p className="text-danger">{error?.message}</p>
-        <p className="text-danger">{resetError?.message}</p>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox"></Form.Group>
-        <Button
-          className="w-100 rounded-pill d-block mx-auto fs-5 mb-4"
-          variant="primary"
-          type="submit"
-        >
-          Login
-        </Button>
-      </Form>
-      <p className=" text-center mt-2">
-        New User?
-        <Link to="/signup" className="text-primary text-decoration-none px-2">
-          Please Register
-        </Link>
-      </p>
-      <p className=" text-center mt-2">
-        Forget Password?
-        <Link
-          to="/login"
-          onClick={resetPassword}
-          className="text-primary text-decoration-none px-2"
-        >
-          Reset Password
-        </Link>
-      </p>
-      <SocialLogin />
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Control
+                required
+                type="password"
+                name="password"
+                className=""
+                placeholder="Password"
+              />
+            </Form.Group>
+            <p className="text-danger">{error?.message}</p>
+            <p className="text-danger">{resetError?.message}</p>
+            <Form.Group
+              className="mb-3"
+              controlId="formBasicCheckbox"
+            ></Form.Group>
+            <Button
+              className="w-100 rounded-pill d-block mx-auto fs-5 mb-4"
+              variant="primary"
+              type="submit"
+            >
+              Login
+            </Button>
+          </Form>
+          <p className=" text-center mt-2">
+            New User?
+            <Link
+              to="/signup"
+              className="text-primary text-decoration-none px-2"
+            >
+              Please Register
+            </Link>
+          </p>
+          <p className=" text-center mt-2">
+            Forget Password?
+            <Link
+              to="/login"
+              onClick={resetPassword}
+              className="text-primary text-decoration-none px-2"
+            >
+              Reset Password
+            </Link>
+          </p>
+          <SocialLogin />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default Login;
+
+
+/* 
+<div className="container mb-5">
+      <div className="w-100">
+        <img
+          style={{ height: "300px" }}
+          src={userImg}
+          className="img-fluid d-block mx-auto"
+          alt=""
+        />
+      </div>
+      <div className="card mb-3  border-0">
+        <div className="row g-0">
+          <div className="col-md-6">
+            <img
+              src={login}
+              className="img-fluid rounded-start d-md-block d-none"
+              alt="..."
+            />
+          </div>
+          <div className="col-md-6">
+            <Form onSubmit={handleSubmit} className="w-50 mx-auto">
+            <Form.Group className="mb-3 mt-3" controlId="formBasicEmail">
+              <Form.Control
+                required
+                ref={emailRef}
+                type="email"
+                name="email"
+                className=""
+                placeholder="Enter email"
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Control
+                required
+                type="password"
+                name="password"
+                className=""
+                placeholder="Password"
+              />
+            </Form.Group>
+            <p className="text-danger">{error?.message}</p>
+            <p className="text-danger">{resetError?.message}</p>
+            <Form.Group
+              className="mb-3"
+              controlId="formBasicCheckbox"
+            ></Form.Group>
+            <Button
+              className="w-100 rounded-pill d-block mx-auto fs-5 mb-4"
+              variant="primary"
+              type="submit"
+            >
+              Login
+            </Button>
+          </Form>
+          <p className=" text-center mt-2">
+            New User?
+            <Link
+              to="/signup"
+              className="text-primary text-decoration-none px-2"
+            >
+              Please Register
+            </Link>
+          </p>
+          <p className=" text-center mt-2">
+            Forget Password?
+            <Link
+              to="/login"
+              onClick={resetPassword}
+              className="text-primary text-decoration-none px-2"
+            >
+              Reset Password
+            </Link>
+          </p>
+          <SocialLogin />
+          </div>
+        </div>
+      </div>
+    </div>
+*/
