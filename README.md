@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# BD Books Warehouse
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project Live site [Link](https://bd-books-warehouse.web.app/)
 
-## Available Scripts
+StackOverflow [Link](https://stackoverflow.com/questions/72155223/how-to-use-jwt-in-react)
 
-In the project directory, you can run:
+## Purpose
 
-### `npm start`
+This is a warehouse website. Here is the information about product storage accounting and product management.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## home
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+First there are banners with pictures of several warehouses and buttons for product management.
 
-### `npm test`
+This is followed by the TOP CATEGORIES section which lists the best selling CATEGORIES categories.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+After that there are OUR TOP LISTING BOOKS of the warehouse.
 
-### `npm run build`
+Then there's TOP PUBLISHER, which lists the best-selling publications.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Manage Inventories
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Manage Inventories This page has a list for managing all products and there is a button to delete from this list where clicking will delete the product and above all there is another button Add Items where clicking can take you to Add Items page and add new products.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Add Items
 
-### `npm run eject`
+If you submit all the product information on the Add Items page, new product will be added
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## My Items
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+On the My Items page only the logged in user will show a list of all the products added and will be able to delete specific products.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Blogs
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The following questions are answered on the Blogs page
 
-## Learn More
+### `1.` Difference between javascript and nodejs
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `2.` When should you use nodejs and when should you use MongoDB
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### `3. `Differences between SQL and NoSQL databases.
 
-### Code Splitting
+### `4.` What is the purpose of JWT and how does it work
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## More that has been used
 
-### Analyzing the Bundle Size
+The basic version of the `JWT` token is used for email / password-based authentication. After logging in, a `JWT` token is created and stored on the client-side and for my item page, the token is sent with the call and verified to the user. `401` and `403` have been applied. And `.env` files have been added
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### All the technologies that have been used
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+react-bootstrap: `2.3.1`
+react-dom: `18.1.0`
+react-firebase-hooks: `5.0.3`
+react-hook-form: `7.30.0`
+react-icons: `4.3.1`
+react-router-dom: `6.3.0`
